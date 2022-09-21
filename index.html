@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Countdown Till!</title>
+</head>
+
+<body>
+    <div class="center">
+        <input type="checkbox" id="show" />
+        <label for="show" class="showBtn" id="currentDate"></label>
+        <div class="container">
+            <div class="box-contain">
+                <div class="input-date-contain">
+                    <span class="month">
+                        <label class="m-label" for="month">Month:</label>
+                        <select id="Month" class="Month" onchange="pickMe()">
+                        </select>
+                    </span>
+
+                    <span class="day">
+                        <label class="d-label" for="day">Day:</label>
+                        <select id="Day" onchange="pickMe()">
+                        </select>
+                    </span>
+
+                    <span class="year">
+                        <label class="y-label" for="year">Year:</label>
+                        <input id="Year" onchange="pickMe()" type="text" name="pincode" maxlength="4" id="pin"
+                            pattern="\d{4}" min="1900" max="2050" required />
+                    </span>
+
+                    <div id="demo" class="datePicked"></div>
+                    <div id="DaysTill" class="daysTill"></div>
+                </div>
+            </div>
+            <label for="show" class="closeBtn" title="close">Done</label>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -16,27 +16,26 @@
         <div class="container">
             <div class="box-contain">
                 <div class="input-date-contain">
-                    <span class="month">
-                        <label class="m-label" for="month">Month:</label>
-                        <select id="Month" class="Month" onchange="pickMe()">
-                        </select>
-                    </span>
+                        <span class="month">
+                            <label class="m-label" for="month">Month:</label>
+                            <select id="Month" class="" oninput="myFunction()">
+                            </select>
+                        </span>
 
-                    <span class="day">
-                        <label class="d-label" for="day">Day:</label>
-                        <select id="Day" onchange="pickMe()">
-                        </select>
-                    </span>
+                        <span class="day">
+                            <label class="d-label" for="day">Day:</label>
+                            <select id="Day" class="" oninput="myFunction()">
+                            </select>
+                        </span>
 
-                    <span class="year">
-                        <label class="y-label" for="year">Year:</label>
-                        <input id="Year" onchange="pickMe()" type="text" name="pincode" maxlength="4" id="pin"
-                            pattern="\d{4}" min="1900" max="2050" required />
-                    </span>
-
-                    <div id="demo" class="datePicked"></div>
-                    <div id="DaysTill" class="daysTill"></div>
+                        <span class="year">
+                            <label class="y-label" for="year">Year:</label>
+                            <input id="Year" oninput="myFunction()" type="text"  maxlength="4" />
+                        </span>
+                        <div id="DatePicked" class="datePicked"></div>
+                        <div id="DaysTill" class="daysTill"></div>
                 </div>
+
             </div>
             <label for="show" class="closeBtn" title="close">Done</label>
         </div>

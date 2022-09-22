@@ -14,11 +14,22 @@ document.getElementById('currentDate').innerHTML = formattedToday;
 
 
 //get the date picked saved to localstorage
-function datePicked() {
-    var newdate = localStorage['Month'] + '/' + localStorage['Day'] + '/' + localStorage['Year'];
-    document.getElementById("demo").innerHTML = newdate;
+
+function myFunction() {
+    var x = document.getElementById('Month').value;
+    var y = document.getElementById('Day').value;
+    var z = document.getElementById('Year').value;
+    var answer = String(x + ' ' + y + ',' + z);
+    document.getElementById('DatePicked').innerHTML = answer;
+
+
+    var dayDiff = localStorage['Day'] - dd;
+
+    var get = dayDiff + ' days from now';
+
+    document.getElementById('DaysTill').innerHTML = get;
 };
-datePicked();
+
 
 
 
@@ -51,26 +62,6 @@ function saveMe() {
         }
         input.onchange = function () {
             localStorage['Year'] = this.value; // change localStorage on change
-        }
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
-        var input = document.getElementById('demo');
-        if (localStorage['demo']) {
-            input.value = localStorage['demo']; // set the value
-        }
-        input.onchange = function () {
-            localStorage['demo'] = this.value; // change localStorage on change
-        }
-    });
-
-    document.addEventListener('DOMContentLoaded', function () {
-        var input = document.getElementById('show');
-        if (localStorage['show']) {
-            input.value = localStorage['show']; // set the value
-        }
-        input.onchange = function () {
-            localStorage['show'] = this.value; // change localStorage on change
         }
     });
 };
@@ -150,70 +141,14 @@ populateDays(monthSelect.value);
 
 yearSelect.onchange = function () {
     populateDays(monthSelect.value);
-}
+};
 monthSelect.onchange = function () {
     populateDays(monthSelect.value);
-}
+};
 daySelect.onchange = function () {
     previousDay = daySelect.value;
 };
 
 
 
-//get the difference between the two dates
-var mon = localStorage['Month'];
-var day = localStorage['Day'];
-var yr = localStorage['Year'];
-//make if statement if they choose to go to a date in the past?
-//changes the string result...
-if (day < 10) day = '0' + day;
-if (mon < 10) mon = '0' + mon;
-
-var dateDiff = mon + '/' + 'day' + '/' + yr;
-
-var difference = formattedToday - dateDiff;
-
-var get = difference + ' days from now';
-
-document.getElementById("DaysTill").innerHTML = get;
-
-
-
-//localStorage.setItem("show", checked);
-//localStorage.getItem("show");
-
-/*
-document.addEventListener("DOMContentLoaded", function (event) {
-
-    // Put the button into a variable
-    var e = document.getElementById("Month");
-
-    // Wait for user to click the button
-    e.addEventListener("change", function () {
-
-        // Put the selected value into a variable
-        var mon = this.monthSelect.value;
-
-        // The "Switch" statement.
-        switch (mon) {
-
-            case "Blue":
-                
-                break;
-
-            case "Red":
-                alert("Quite daring!");
-                break;
-
-            case "Green":
-                alert("Like... grass?");
-                break;
-
-        }
-    }, false);
-});
-*/
-
-setTimeouth(() => {
-    document.location.reload();
-}, 3000);
+//localStorage.clear();

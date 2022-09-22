@@ -1,5 +1,7 @@
 
 
+window.onload = () => alert("Click The Date!")
+
 //get the current date
 var today = new Date();
 var yyyy = today.getFullYear();

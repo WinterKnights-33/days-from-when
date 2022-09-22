@@ -1,5 +1,8 @@
 
 
+document.write();
+
+
 //get the current date
 var today = new Date();
 var yyyy = today.getFullYear();
@@ -13,23 +16,16 @@ var formattedToday = mm + '/' + dd + '/' + yyyy;
 document.getElementById('currentDate').innerHTML = formattedToday;
 
 
-//get the date picked saved to localstorage
+//get the date picked
 
 function myFunction() {
     var x = document.getElementById('Month').value;
     var y = document.getElementById('Day').value;
     var z = document.getElementById('Year').value;
-    var answer = String(x + ' ' + y + ',' + z);
+    var answer = x + ' ' + y + ',' + z;
+
     document.getElementById('DatePicked').innerHTML = answer;
-
-
-    var dayDiff = localStorage['Day'] - dd;
-
-    var get = dayDiff + ' days from now';
-
-    document.getElementById('DaysTill').innerHTML = get;
 };
-
 
 
 
@@ -149,6 +145,14 @@ daySelect.onchange = function () {
     previousDay = daySelect.value;
 };
 
+function date_diff_indays(formattedToday, answer) {
+    dt1 = new Date(formattedToday);
+    dt2 = new Date(answer);
 
+    get = Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) / (1000 * 60 * 60 * 24));
+
+    document.getElementById('DaysTill').innerHTML = get + ' days from now';
+};
+date_diff_indays();
 
 //localStorage.clear();

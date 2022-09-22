@@ -25,6 +25,10 @@ function myFunction() {
     var answer = x + ' ' + y + ',' + z;
 
     document.getElementById('DatePicked').innerHTML = answer;
+
+    var differenceInDays = date_diff_indays();
+    document.getElementById('DaysTill').innerHTML = differenceInDays + ' days from now';
+
 };
 
 
@@ -132,9 +136,22 @@ function populateDays(month) {
     }
 };
 
+function populateYears() {
+    //Get the current year as a number
+    let year = new Date().getFullYear();
+    //Make the previous 100 years be an option
+    for (let i = 0; i < 101; i++) {
+        const option = document.createElement("option");
+        option.textContent = year - i;
+        yearSelect.appendChild(option);
+    }
+}
+
 //the result
 populateDays(monthSelect.value);
+populateYears();
 
+/*
 yearSelect.onchange = function () {
     populateDays(monthSelect.value);
 };
@@ -144,15 +161,14 @@ monthSelect.onchange = function () {
 daySelect.onchange = function () {
     previousDay = daySelect.value;
 };
+*/
 
 function date_diff_indays(formattedToday, answer) {
-    dt1 = new Date(formattedToday);
-    dt2 = new Date(answer);
+    let dt1 = new Date(formattedToday);
+    let dt2 = new Date(answer);
 
-    get = Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) / (1000 * 60 * 60 * 24));
+    Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) / (1000 * 60 * 60 * 24));
 
-    document.getElementById('DaysTill').innerHTML = get + ' days from now';
 };
-date_diff_indays();
 
 //localStorage.clear();

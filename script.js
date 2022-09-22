@@ -136,8 +136,19 @@ function populateDays(month) {
 };
 
 
+function populateYears() {
+//because of the input box, this function isnt for the user's end
+    let year = new Date().getFullYear();
+    for (let i = 0; i < 101; i++) {
+        const option = document.createElement("option");
+        option.textContent = year - i;
+        yearSelect.appendChild(option);
+    }
+}
+
 //the result
 populateDays(monthSelect.value);
+populateYears();
 
 /*
 yearSelect.onchange = function () {

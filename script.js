@@ -69,9 +69,9 @@ saveMe();
 
 
 //dropdown choices for date
-var yearSelect = document.getElementById("Year");
-var monthSelect = document.getElementById("Month");
-var daySelect = document.getElementById("Day");
+const monthSelect = document.getElementById("Month");
+const daySelect = document.getElementById("Day");
+const yearSelect = document.getElementById("Year");
 
 const months = ['January', 'February', 'March', 'April',
     'May', 'June', 'July', 'August', 'September', 'October',
@@ -96,27 +96,27 @@ function populateDays(month) {
         daySelect.removeChild(daySelect.firstChild);
     }
 
-    var dayNumber;
+    var dayNum;
     var year = yearSelect.value;
 
 
     if (month === 'January' || month === 'March' ||
         month === 'May' || month === 'July' || month === 'August'
         || month === 'October' || month === 'December') {
-        dayNumber = 31;
+        dayNum = 31;
     } else if (month === 'April' || month === 'June'
         || month === 'September' || month === 'November') {
-        dayNumber = 30;
+        dayNum = 30;
     } else {
         //check for a leap year
         if (new Date(year, 1, 29).getMonth() === 1) {
-            dayNumber = 29;
+            dayNum = 29;
         } else {
-            dayNumber = 28;
+            dayNum = 28;
         }
     }
     //get the correct days when picking a month
-    for (var i = 1; i <= dayNumber; i++) {
+    for (var i = 1; i <= dayNum; i++) {
         const option = document.createElement("option");
         option.textContent = i;
         daySelect.appendChild(option);
@@ -139,10 +139,9 @@ function populateDays(month) {
 function populateYears() {
 //because of the input box, this function isnt for the user's end
     let year = new Date().getFullYear();
-    for (let i = 0; i < 101; i++) {
-        const option = document.createElement("option");
-        option.textContent = year - i;
-        yearSelect.appendChild(option);
+    for (var i = 0; i < 101; i++) {
+        const yearOption = document.getElementById('Year');
+        yearOption.value = year - i;
     }
 }
 
